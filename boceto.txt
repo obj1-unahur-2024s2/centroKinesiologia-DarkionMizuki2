@@ -1,0 +1,31 @@
+aparatosYPacientes.wlk ---
+class Kinesiologia{
+
+}
+
+class Aparato inherits Kinesiologia{
+    method seUsaPor(unPaciente)
+}
+
+class Paciente inherits Kinesiologia{
+    var nivelDeFortalezaMuscular
+    var nivelDeDolor
+    const edad
+    method edad()
+    method nivelDeFortalezaMuscular()
+    method nivelDeDolor()
+    method utilizarAparato(unAparato){
+        unAparato.seUsaPor(self)
+    }
+    method puedeUsar(unAparato)
+}
+
+class Magneto inherits Aparato{
+    override method seUsaPor(unPaciente){}
+}
+class Bicicleta inherits Aparato{
+    override method seUsaPor(unPaciente){}
+}
+class Minitramp inherits Aparato{
+    override method seUsaPor(unPaciente){}
+}
