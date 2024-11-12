@@ -1,4 +1,5 @@
 import aparatosYPacientes.*
+import centro.*
 
 class PacienteResistente inherits Paciente{
     override method realizarSesionCompleta(){

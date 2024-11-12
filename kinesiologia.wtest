@@ -1,5 +1,6 @@
 import aparatosYPacientes.*
 import pacientesEspeciales.*
+import centro.*
 
 describe "Test parte 1" {
   const leonardo = new Paciente(nivelDeDolor=10,nivelDeFortalezaMuscular=20,edad=40)
