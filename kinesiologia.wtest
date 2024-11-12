@@ -1,4 +1,5 @@
 import aparatosYPacientes.*
+import pacientesEspeciales.*
 
 describe "Test parte 1" {
   const leonardo = new Paciente(nivelDeDolor=10,nivelDeFortalezaMuscular=20,edad=40)
@@ -70,5 +71,90 @@ describe "Tests parte 2"{
   test "Milena no puede hacer la rutina que tiene
   asignada."{
     assert.notThat(milena.puedeHacerLaRutinaAsignada())
+  }
+}
+
+describe "Tests parte 3"{
+  const nicolas=new PacienteResistente
+  (
+    edad=40,
+    nivelDeDolor=10,
+    nivelDeFortalezaMuscular = 20
+  )
+  const victoria=new PacienteCaprichoso
+  (
+    edad=30,
+    nivelDeDolor=10,
+    nivelDeFortalezaMuscular = 40
+  )
+  const julian = new PacienteCaprichoso(
+    edad=20,
+    nivelDeDolor=54,
+    nivelDeFortalezaMuscular = 50
+  )
+  const zoe = new PacienteDeRapidaRecuperacion(
+    edad=50,
+    nivelDeDolor=14,
+    nivelDeFortalezaMuscular = 40
+  )
+  const unMagneto = new Magneto()
+  const unaBicicleta = new Bicicleta()
+  const unaMinitramp = new Minitramp()
+  const rutinaDeLeonardo = [unaBicicleta,unaMinitramp,unaBicicleta,unMagneto]
+  method initialize(){
+    unaBicicleta.colorearDe("rojo")
+    unMagneto.colorearDe("verde")
+    nicolas.asignarRutina(rutinaDeLeonardo)
+    victoria.asignarRutina(rutinaDeLeonardo)
+    julian.asignarRutina([unaBicicleta,unMagneto,unaBicicleta])
+    zoe.asignarRutina(rutinaDeLeonardo)
+    centro.cantidadDeDecrementoDeDolorParaPacientesDeRecuperacionRapida(2)
+  }
+  test "Nicolás puede hacer la rutina que tiene asignada."{
+    assert.that(nicolas.puedeHacerLaRutinaAsignada())
+  }
+  test "Nicolas después de hacer su rutina una vez, 
+  su nivel de dolor 
+  baja a 1.8."{
+    centro.concurre(nicolas)
+    assert.equals(1.8,nicolas.nivelDeDolor())
+  }
+  test "Nicolas después de hacer su rutina una vez,
+  su fortaleza sube a 34."{
+    centro.concurre(nicolas)
+    assert.equals(34,nicolas.nivelDeFortalezaMuscular())
+  }
+  test "Victoria no puede hacer la rutina que tiene asignada."{
+    assert.notThat(victoria.puedeHacerLaRutinaAsignada())
+  }
+  test "Julian puede hacer la rutina que tiene asignada."{
+    assert.that(julian.puedeHacerLaRutinaAsignada())
+  }
+  test "Julian después de hacer su rutina una vez,
+   su nivel de dolor baja a 29.3."{
+    centro.concurre(julian)
+    assert.equals(29.3,julian.nivelDeDolor())
+  }
+  test "Julian después de hacerla una vez, su 
+  fortaleza sube a 62."{
+    centro.concurre(julian)
+    assert.equals(62,julian.nivelDeFortalezaMuscular())
+  }
+  test "Zoe puede hacer la rutina que tiene asignada."{
+    assert.that(zoe.puedeHacerLaRutinaAsignada())
+  }
+  test "Zoe después de asignar a 2 el valor de 
+  decremento de dolor para pacientes de rápida 
+  recuperación, y de que Zoe haga su rutina una vez, 
+  su nivel de dolor baja a 3.4"{
+    centro.concurre(zoe)
+    assert.equals(3.4,zoe.nivelDeDolor())
+  }
+  test "Zoe después de asignar a 2 el valor de 
+  decremento de dolor para pacientes de rápida 
+  recuperación, y de que Zoe haga su rutina una vez, 
+  su fortaleza sube a 51."{
+    centro.concurre(zoe)
+    assert.equals(51,zoe.nivelDeFortalezaMuscular())
   }
 }

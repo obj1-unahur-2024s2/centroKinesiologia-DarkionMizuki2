@@ -1,10 +1,15 @@
+import pacientesEspeciales.*
 class Kinesiologia{
 
 }
 
 class Aparato inherits Kinesiologia{
+    var property color="blanco"
     method seUsaPor(unPaciente)
     method condicionDeUso(unPaciente)
+    method colorearDe(unColor){
+      color=unColor
+    }
 }
 
 class Paciente inherits Kinesiologia{
@@ -42,6 +47,8 @@ class Paciente inherits Kinesiologia{
 }
 
 object centro{
+  var property 
+  cantidadDeDecrementoDeDolorParaPacientesDeRecuperacionRapida=3
   method concurre(unPaciente){
     unPaciente.realizarSesionCompleta()
   }

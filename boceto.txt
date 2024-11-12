@@ -29,3 +29,44 @@ class Bicicleta inherits Aparato{
 class Minitramp inherits Aparato{
     override method seUsaPor(unPaciente){}
 }
+
+//Tests parte 3
+ZOE
+Tipo: Paciente de rapida recuperacion
+Edad: 50
+Dolor: 14
+Fortaleza: 40
+Rutina: [unaBicicleta,unaMinitramp,unaBicicleta,unMagneto]
+unaBicicleta -> color: rojo
+unaMinitramp -> color: blanco
+unMagneto -> color: verde
+
+centro.concurre(zoe)
+-> zoe.realizarSesionCompleta()
+-> -> rutina.forEach({a => self.utilizarAparato(a)})
+
+1° zoe.utilizarAparato(unaBicicleta)
+-> unaBicicleta.seUsaPor(zoe)
+-> -> zoe.disminuirDolorEn_Puntos(4)
+Dolor: 14 - 4 = 10
+-> -> zoe.sumar_PuntosDeFortalezaMuscular(3)
+Fortaleza: 40 + 3 = 43
+
+2° zoe.utilizarAparato(unaMinitramp)
+-> unaMinitramp.seUsaPor(zoe)
+-> -> zoe.aumentarNivelDeFortalezaUn_PorcientoDeLaEdadDelPaciente(10)
+Fortaleza: 43 + 50*0.1 = 48
+
+3° zoe.utilizarAparato(unaBicicleta)
+-> unaBicicleta.seUsaPor(zoe)
+-> -> zoe.disminuirDolorEn_Puntos(4)
+Dolor: 10 - 4 = 6
+-> -> zoe.sumar_PuntosDeFortalezaMuscular(3)
+Fortaleza: 48 + 3 = 51
+
+4° zoe.utilizarAparato(unMagneto)
+-> unMagneto.seUsaPor(zoe)
+-> -> zoe.disminuirDolorEnUn_Porciento(10)
+Dolor: 6 - 6*0.1 = 5.4
+Dolor: 5.4 - 2 = 2.4
+
