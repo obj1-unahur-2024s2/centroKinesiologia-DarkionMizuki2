@@ -42,3 +42,33 @@ describe "Test parte 1" {
     assert.equals(24,leonardo.nivelDeFortalezaMuscular())
   }
 }
+
+describe "Tests parte 2"{
+  const leonardo = new Paciente(nivelDeDolor=10,nivelDeFortalezaMuscular=20,edad=40)
+  const milena = new Paciente(nivelDeDolor=30,nivelDeFortalezaMuscular=50,edad=3)
+  const unMagneto = new Magneto()
+  const unaBicicleta = new Bicicleta()
+  const unaMinitramp = new Minitramp()
+  const rutinaDeLeonardo = [unaBicicleta,unaMinitramp,unaBicicleta,unMagneto]
+  const rutinaDeMilena = [unMagneto,unaBicicleta]
+  method initialize(){
+    leonardo.asignarRutina(rutinaDeLeonardo)
+    milena.asignarRutina(rutinaDeMilena)
+  }
+  test "Leonardo puede hacer la rutina que tiene 
+  asignada"
+  {
+    assert.that(leonardo.puedeHacerLaRutinaAsignada())
+  }
+  test "Leonardo despues de hacer su rutina,
+  su nivel de dolor baja a 1.8 y su fortaleza
+  sube a 30"{
+    centro.concurre(leonardo)
+    assert.equals(1.8,leonardo.nivelDeDolor())
+    assert.equals(30,leonardo.nivelDeFortalezaMuscular())
+  }
+  test "Milena no puede hacer la rutina que tiene
+  asignada."{
+    assert.notThat(milena.puedeHacerLaRutinaAsignada())
+  }
+}

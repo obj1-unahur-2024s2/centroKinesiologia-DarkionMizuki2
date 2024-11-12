@@ -11,6 +11,7 @@ class Paciente inherits Kinesiologia{
     var nivelDeFortalezaMuscular
     var nivelDeDolor
     const edad
+    const property rutina=[]
     method edad()=edad
     method nivelDeFortalezaMuscular()=nivelDeFortalezaMuscular
     method nivelDeDolor()=nivelDeDolor
@@ -30,6 +31,20 @@ class Paciente inherits Kinesiologia{
         unAparato.seUsaPor(self)
     }
     method puedeUsar(unAparato)=unAparato.condicionDeUso(self)
+    method asignarRutina(unaRutina){
+      unaRutina.forEach({a => self.rutina().add(a)})
+    }
+    method puedeHacerLaRutinaAsignada()=
+    rutina.all({unAparato => self.puedeUsar(unAparato)})
+    method realizarSesionCompleta(){
+      rutina.forEach({a => self.utilizarAparato(a)})
+    }
+}
+
+object centro{
+  method concurre(unPaciente){
+    unPaciente.realizarSesionCompleta()
+  }
 }
 
 class Magneto inherits Aparato{
